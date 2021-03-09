@@ -53,6 +53,7 @@ class main(QMainWindow):
     #main screen
     def __init__(self):
         super(main, self).__init__()
+        sharedSpace.loadSettings()
         self.settingsWindow = SettingsWindow()
         self.catWindow = CategoriesWindow()
 
@@ -103,11 +104,11 @@ class main(QMainWindow):
         self.lb4.setPixmap(self.juices[3])
         self.lb5.setPixmap(self.juices[4])
         self.lb6.setPixmap(self.juices[5])
-        for i in range(0,6):
-            self.juicesLbl[i].setStyleSheet("QLabel::hover"
-                                            "{"
-                                                "background-color : rgb(232, 243, 193);"
-                                            "}") 
+        # for i in range(0,6):
+        #     self.juicesLbl[i].setStyleSheet("QLabel::hover"
+        #                                     "{"
+        #                                         "background-color : rgb(232, 243, 193);"
+        #                                     "}") 
         #label.show()
         self.lblExit = self.findChild(QtWidgets.QLabel, "lblExit")
         clickable(self.lblExit).connect(self.exitAll)
@@ -131,7 +132,7 @@ class main(QMainWindow):
 
 
         self.ActiveWinManager = QTimer()
-        self.ActiveWinManager.setInterval(500)#changed from 2000
+        self.ActiveWinManager.setInterval(1000)#changed from 2000
         self.ActiveWinManager.timeout.connect(self.ActiveWin)
         self.ActiveWinManager.start()
 
@@ -248,6 +249,39 @@ class main(QMainWindow):
     def ActiveWin(self):
         #toggles (open/close) the screen based on the moderator remote button press
        
+        if(sharedSpace.updatePics()):
+            print('updating')
+            self.dn1.setText(sharedSpace.drinkNames[0])
+            self.dn2.setText(sharedSpace.drinkNames[1])
+            self.dn3.setText(sharedSpace.drinkNames[2])
+            self.dn4.setText(sharedSpace.drinkNames[3])
+            self.dn5.setText(sharedSpace.drinkNames[4])
+            self.dn6.setText(sharedSpace.drinkNames[5])
+
+            self.juices =[ QtGui.QPixmap(sharedSpace.drinksPath[0]),
+                        QtGui.QPixmap(sharedSpace.drinksPath[1]),
+                        QtGui.QPixmap(sharedSpace.drinksPath[2]),
+                        QtGui.QPixmap(sharedSpace.drinksPath[3]),
+                        QtGui.QPixmap(sharedSpace.drinksPath[4]),
+                        QtGui.QPixmap(sharedSpace.drinksPath[5])
+                        ]
+            self.lb1.setPixmap(self.juices[0])
+            self.lb2.setPixmap(self.juices[1])
+            self.lb3.setPixmap(self.juices[2])
+            self.lb4.setPixmap(self.juices[3])
+            self.lb5.setPixmap(self.juices[4])
+            self.lb6.setPixmap(self.juices[5])
+            self.dn1.setText(sharedSpace.drinkNames[0])
+            self.dn2.setText(sharedSpace.drinkNames[1])
+            self.dn3.setText(sharedSpace.drinkNames[2])
+            self.dn4.setText(sharedSpace.drinkNames[3])
+            self.dn5.setText(sharedSpace.drinkNames[4])
+            self.dn6.setText(sharedSpace.drinkNames[5])
+            
+
+
+
+
         if(self.screenActivate==1):
             if(self.screenANum==1):
                 self.toggle_window(self.catWindow,'cat')

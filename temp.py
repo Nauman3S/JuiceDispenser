@@ -28,3 +28,6 @@ def genFilesList():
     print(lst)
 
 genFilesList()
+
+g=('C:/Users/nauma/OneDrive/Pictures/px100.png', 'Image files (*.jpg *.png)')
+print(g[0])

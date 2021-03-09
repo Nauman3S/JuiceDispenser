@@ -30,7 +30,7 @@ class SettingsWindow(QtWidgets.QWidget):
         
         self.load_ui()
         self.center()    
-
+        sharedSpace.loadSettings()
         #Image files for selected and unselected buttons are defined below
         self.pixmapOFF =[ QtGui.QPixmap('off0.png'),QtGui.QPixmap('on0.png'),QtGui.QPixmap('sec5.png'),QtGui.QPixmap('sec10.png')]
         self.pixmapON = [ QtGui.QPixmap('off1.png'),QtGui.QPixmap('on1.png'),QtGui.QPixmap('sec5on.png'),QtGui.QPixmap('sec10on.png')]
@@ -73,6 +73,7 @@ class SettingsWindow(QtWidgets.QWidget):
         sharedSpace.ingredientsText[1]=self.txt2.text()
         sharedSpace.ingredientsText[2]=self.txt3.text()
         sharedSpace.ingredientsText[3]=self.txt4.text()
+        sharedSpace.saveSettings()
         self.hide()
     def clkB3(self):
         print("b3")

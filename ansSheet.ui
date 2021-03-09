@@ -111,7 +111,7 @@
     <string>Text &quot;Ingredient#4&quot; / 100ml</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="ql2">
    <property name="geometry">
     <rect>
      <x>230</x>
@@ -120,8 +120,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="text">
+    <string>20</string>
+   </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_2">
+  <widget class="QLineEdit" name="ql3">
    <property name="geometry">
     <rect>
      <x>230</x>
@@ -130,8 +133,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="text">
+    <string>10</string>
+   </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_3">
+  <widget class="QLineEdit" name="ql4">
    <property name="geometry">
     <rect>
      <x>230</x>
@@ -140,8 +146,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="text">
+    <string>10</string>
+   </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_4">
+  <widget class="QLineEdit" name="ql5">
    <property name="geometry">
     <rect>
      <x>230</x>
@@ -149,6 +158,9 @@
      <width>131</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="text">
+    <string>10</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_7">
@@ -229,7 +241,7 @@
     <string>Save</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_5">
+  <widget class="QLineEdit" name="ql1">
    <property name="geometry">
     <rect>
      <x>220</x>
@@ -237,6 +249,9 @@
      <width>201</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="text">
+    <string>Name Here</string>
    </property>
   </widget>
   <widget class="QPushButton" name="b3">

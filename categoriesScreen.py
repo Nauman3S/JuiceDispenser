@@ -71,6 +71,7 @@ class CategoriesWindow(QtWidgets.QWidget):
         
         self.load_ui()
         self.center()    
+        self.selectedD=(sharedSpace.getSelectedDrink())-1
 
         #all categores and amount buttons below
         self.b1 = self.findChild(QtWidgets.QPushButton, "b1")
@@ -90,10 +91,10 @@ class CategoriesWindow(QtWidgets.QWidget):
         g=int((sharedSpace.selectedDrink.split(';'))[1])
         self.dn.setText(sharedSpace.drinkNames[g-1])
 
-        self.il1.setText(sharedSpace.ingredientsText[0]+' Ingredient#1 20ml')
-        self.il2.setText(sharedSpace.ingredientsText[1]+' Ingredient#2 20ml')
-        self.il3.setText(sharedSpace.ingredientsText[2]+' Ingredient#3 20ml')
-        self.il4.setText(sharedSpace.ingredientsText[3]+' Ingredient#4 20ml')
+        self.il1.setText(sharedSpace.ingredientsText[0]+' '+str(sharedSpace.drinksIngredientsMl[self.selectedD][0]))
+        self.il2.setText(sharedSpace.ingredientsText[1]+' '+str(sharedSpace.drinksIngredientsMl[self.selectedD][1]))
+        self.il3.setText(sharedSpace.ingredientsText[2]+' '+str(sharedSpace.drinksIngredientsMl[self.selectedD][2]))
+        self.il4.setText(sharedSpace.ingredientsText[3]+' '+str(sharedSpace.drinksIngredientsMl[self.selectedD][3]))
         
         self.lb1 = self.findChild(QtWidgets.QLabel, "lb1")
 
@@ -116,19 +117,21 @@ class CategoriesWindow(QtWidgets.QWidget):
         clickable(self.r2).connect(self.cb2)
         clickable(self.r3).connect(self.cb3)
 
+        
 
-        self.juice =[ QtGui.QPixmap('drinks/1.png')]
+        self.juice =[ QtGui.QPixmap(sharedSpace.drinksPath[self.selectedD])]
         self.backImg= QtGui.QPixmap('img/back.png')
 
-        self.lb1.setStyleSheet("QLabel::hover"
-                                            "{"
-                                                "background-color : rgb(232, 243, 193);"
-                                            "}") 
-        self.bck.setStyleSheet("QLabel::hover"
-                                            "{"
-                                                "background-color : rgb(232, 243, 193);"
-                                            "}") 
+        # self.lb1.setStyleSheet("QLabel::hover"
+        #                                     "{"
+        #                                         "background-color : rgb(232, 243, 193);"
+        #                                     "}") 
+        # self.bck.setStyleSheet("QLabel::hover"
+        #                                     "{"
+        #                                         "background-color : rgb(232, 243, 193);"
+        #                                     "}") 
 
+        
         self.lb1.setPixmap(self.juice[0])
         self.bck.setPixmap(self.backImg)
 
