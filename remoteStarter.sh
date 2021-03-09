@@ -1,0 +1,1 @@
+sudo DISPLAY=:1.0 python3 main.py

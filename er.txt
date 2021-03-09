@@ -1,0 +1,32 @@
+qt.svg: Cannot open file ':/icon/primary/splitter-horizon[35/57]
+Starting webserver and WebSockets proxy on port 80              │', because: No such file or directory                          
+                                                                │qt.svg: Cannot open file ':/icon/primary/splitter-horizontal.svg
+                                                                │', because: No such file or directory                          
+Navigate to this URL:                                           │qt.svg: Cannot open file ':/icon/primary/sizegrip.svg', because:
+                                                                │ No such file or directory
+    http://raspberrypi:80/vnc.html?host=raspberrypi&port=80     │qt.svg: Cannot open file ':/icon/primary/sizegrip.svg', because:
+                                                                │ No such file or directory
+Press Ctrl-C to exit                                            │ct
+                                                                │ct
+                                                                │ct
+WebSocket server settings:                                      │ct
+  - Listen on :80                                               │ct
+  - Flash security policy server                                │Juice 3
+  - Web server. Web root: /opt/remote_desktop/noVNC             │/home/pi/Desktop/CocktailSystem/ansSheet.ui                    
+  - No SSL/TLS support (no cert file)                           │/home/pi/Desktop/CocktailSystem/categories.ui                  
+  - proxying from :80 to 127.0.0.1:5901                         │qt.svg: Cannot open file ':/icon/primary/radiobutton_checked.svg
+localhost - - [09/Mar/2021 05:05:43] 127.0.0.1: Plain non-SSL (w│', because: No such file or directory                          
+s://) WebSocket connection                                      │qt.svg: Cannot open file ':/icon/primary/radiobutton_checked.svg
+localhost - - [09/Mar/2021 05:05:43] 127.0.0.1: Version hybi-13,│', because: No such file or directory                          
+ base64: 'False'                                                │qt.svg: Cannot open file ':/icon/primary/radiobutton_checked.svg
+localhost - - [09/Mar/2021 05:05:43] 127.0.0.1: Path: '/websocki│', because: No such file or directory                          
+fy'                                                             │qt.svg: Cannot open file ':/icon/primary/radiobutton_checked.svg
+localhost - - [09/Mar/2021 05:05:43] connecting to: 127.0.0.1:59│', because: No such file or directory                          
+01                                                              │qt.svg: Cannot open file ':/icon/primary/radiobutton_unchecked.s
+localhost - - [09/Mar/2021 05:05:47] code 400, message Bad reque│vg', because: No such file or directory                        
+st syntax ('\x88\x8f\xc0V\xf9\x9b\xc3\xbe\xad\xfa\xb21\x9c\xef\x│qt.svg: Cannot open file ':/icon/primary/radiobutton_unchecked.s
+e05\x95\xf4\xb33\x9d')                                          │vg', because: No such file or directory                        
+localhost - - [09/Mar/2021 05:05:55] 127.0.0.1: Plain non-SSL (w│qt.svg: Cannot open file ':/icon/primary/radiobutton_unchecked.s
+s://) WebSocket connection                                      │vg', because: No such file or directory                        
+localhost - - [09/Mar/2021 05:05:55] 127.0.0.1: Version hybi-13,│qt.svg: Cannot open file ':/icon/primary/radiobutton_unchecked.s
+ base64: 'False'                                                │vg', because: No such file or directory 
