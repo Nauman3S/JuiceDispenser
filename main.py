@@ -199,17 +199,17 @@ class main(QMainWindow):
         sharedSpace.activeWindow="cat"
         self.toggle_window(self.catWindow,'cat')
         self.hide()
-    def dnClk1():
+    def dnClk1(self):
         self.juice1()
-    def dnClk2():
+    def dnClk2(self):
         self.juice2()
-    def dnClk3():
+    def dnClk3(self):
         self.juice3()
-    def dnClk4():
+    def dnClk4(self):
         self.juice4()
-    def dnClk5():
+    def dnClk5(self):
         self.juice5()
-    def dnClk6():
+    def dnClk6(self):
         self.juice6()
     
     def center(self):
