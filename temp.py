@@ -31,3 +31,12 @@ genFilesList()
 
 g=('C:/Users/nauma/OneDrive/Pictures/px100.png', 'Image files (*.jpg *.png)')
 print(g[0])
+import sys, os
+from PySide2.QtWidgets import QApplication, QLineEdit
+                                                     
+if __name__ == "__main__":
+    os.environ["QT_IM_MODULE"] = "qtvirtualkeyboard" # Import virtual keyboard
+    app = QApplication(sys.argv)
+    lineEdit = QLineEdit()
+    lineEdit.show()
+    sys.exit(app.exec_())

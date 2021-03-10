@@ -352,6 +352,7 @@ class main(QMainWindow):
 
 if __name__ == "__main__":
     #load the app and apply the theme
+    #os.environ["QT_IM_MODULE"] = "qtvirtualkeyboard" # Import virtual keyboard
     app = QApplication([])
     app.setStyle('Fusion')
     

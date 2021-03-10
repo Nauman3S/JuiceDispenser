@@ -22,6 +22,7 @@ class SettingsWindow(QtWidgets.QWidget):
     """
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
+        #os.environ["QT_IM_MODULE"] = "qtvirtualkeyboard" # Import virtual keyboard
         self.qtVal=0 #Question timer selected value
         self.ddVal=0 #daily double selected value
         self.fjVal=0 #final jeopardy selected value
