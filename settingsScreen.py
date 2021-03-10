@@ -74,6 +74,7 @@ class SettingsWindow(QtWidgets.QWidget):
         sharedSpace.ingredientsText[2]=self.txt3.text()
         sharedSpace.ingredientsText[3]=self.txt4.text()
         sharedSpace.saveSettings()
+        sharedSpace.requestUpdate(1)
         self.hide()
     def clkB3(self):
         print("b3")

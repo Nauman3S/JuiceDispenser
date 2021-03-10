@@ -12,21 +12,22 @@ drinksIngredientsMl=[[20,10,10,10],[20,10,10,10],[20,10,10,10],[20,10,10,10],[20
 
 selectedMl=1
 
-updateNow=0
+updateNow=[0,0,0]
 
 def getSelectedDrink():
     global selectedDrink
     m=selectedDrink.split(';')
     km=int(m[1])
     return km
-def updatePics():
+def updatePics(scr):
     global updateNow
-    if(updateNow==1):
-        updateNow=0
+    if(updateNow[scr]==1):
+        updateNow[scr]=0
         return 1
-def requestUpdate():
+    
+def requestUpdate(scr):
     global updateNow
-    updateNow=1
+    updateNow[scr]=1
 
 def saveSettings():
     global drinkNames,ingredientsText,drinksPath, drinksIngredientsMl

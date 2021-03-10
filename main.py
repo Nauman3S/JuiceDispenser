@@ -79,9 +79,15 @@ class main(QMainWindow):
                         QtGui.QPixmap(sharedSpace.drinksPath[5])
         ]
         
+
+        # self.vlo2 = self.findChild(QtWidgets.QVBoxLayout, "vlo2")
+        # self.vlo2.setAlignment(Qt.AlignVCenter | Qt.AlignTop)
+        
+
         #Simple labels
         self.lb1 = self.findChild(QtWidgets.QLabel, "lb1")
         self.lb2 = self.findChild(QtWidgets.QLabel, "lb2")
+        
         self.lb3 = self.findChild(QtWidgets.QLabel, "lb3")
         self.lb4 = self.findChild(QtWidgets.QLabel, "lb4")
         self.lb5 = self.findChild(QtWidgets.QLabel, "lb5")
@@ -111,6 +117,8 @@ class main(QMainWindow):
         #                                     "}") 
         #label.show()
         self.lblExit = self.findChild(QtWidgets.QLabel, "lblExit")
+        self.exitIcon=QtGui.QPixmap('img/exit.png')
+        self.lblExit.setPixmap(self.exitIcon)
         clickable(self.lblExit).connect(self.exitAll)
         #self.lb1.mousePressEvent=self.doIt
         clickable(self.lb1).connect(self.juice1)
@@ -249,7 +257,7 @@ class main(QMainWindow):
     def ActiveWin(self):
         #toggles (open/close) the screen based on the moderator remote button press
        
-        if(sharedSpace.updatePics()):
+        if(sharedSpace.updatePics(0)):
             print('updating')
             self.dn1.setText(sharedSpace.drinkNames[0])
             self.dn2.setText(sharedSpace.drinkNames[1])

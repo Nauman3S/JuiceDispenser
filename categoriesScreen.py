@@ -142,7 +142,7 @@ class CategoriesWindow(QtWidgets.QWidget):
 
 
         self.UITimer = QTimer()
-        self.UITimer.setInterval(1200)# refresh the screen after every 1.2 seconds(1.2 instead of 1 is to avoid the conflict with other screens)
+        self.UITimer.setInterval(1000)# refresh the screen after every 1.2 seconds(1.2 instead of 1 is to avoid the conflict with other screens)
         self.UITimer.timeout.connect(self.UIMethod)
         self.UITimer.start()
     def cb1(self):
@@ -163,6 +163,16 @@ class CategoriesWindow(QtWidgets.QWidget):
         sharedSpace.selectedMl=3
         
     def UIMethod(self):
+        if(sharedSpace.updatePics(1)):
+            print('updating')
+            g=int((sharedSpace.selectedDrink.split(';'))[1])
+            self.dn.setText(sharedSpace.drinkNames[g-1])
+            self.juice =[ QtGui.QPixmap(sharedSpace.drinksPath[self.selectedD])]
+            self.lb1.setPixmap(self.juice[0])
+            self.il1.setText(sharedSpace.ingredientsText[0]+' '+str(sharedSpace.drinksIngredientsMl[self.selectedD][0]))
+            self.il2.setText(sharedSpace.ingredientsText[1]+' '+str(sharedSpace.drinksIngredientsMl[self.selectedD][1]))
+            self.il3.setText(sharedSpace.ingredientsText[2]+' '+str(sharedSpace.drinksIngredientsMl[self.selectedD][2]))
+            self.il4.setText(sharedSpace.ingredientsText[3]+' '+str(sharedSpace.drinksIngredientsMl[self.selectedD][3]))
         #checks screen change event
         if(self.screenActivate==1):
             if(self.screenANum==1):

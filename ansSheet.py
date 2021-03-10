@@ -107,7 +107,8 @@ class AnsSheet(QtWidgets.QWidget):
         sharedSpace.drinkNames[m-1]=self.ql1.text()
 
         sharedSpace.saveSettings()
-        sharedSpace.requestUpdate()
+        sharedSpace.requestUpdate(0)
+        sharedSpace.requestUpdate(1)
         self.hide()
 
     def clkB2(self):
