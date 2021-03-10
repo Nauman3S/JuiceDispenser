@@ -138,6 +138,13 @@ class main(QMainWindow):
         self.dn5.setText(sharedSpace.drinkNames[4])
         self.dn6.setText(sharedSpace.drinkNames[5])
 
+        clickable(self.dn1).connect(self.dnClk1)
+        clickable(self.dn2).connect(self.dnClk2)
+        clickable(self.dn3).connect(self.dnClk3)
+        clickable(self.dn4).connect(self.dnClk4)
+        clickable(self.dn5).connect(self.dnClk5)
+        clickable(self.dn6).connect(self.dnClk6)
+
 
         self.ActiveWinManager = QTimer()
         self.ActiveWinManager.setInterval(1000)#changed from 2000
@@ -148,7 +155,8 @@ class main(QMainWindow):
 
     def exitAll(self):
         exit(0)
-      
+    
+
     def juice1(self):
         print('Juice 1')
         sharedSpace.selectedDrink="D;1"
@@ -191,7 +199,18 @@ class main(QMainWindow):
         sharedSpace.activeWindow="cat"
         self.toggle_window(self.catWindow,'cat')
         self.hide()
-    
+    def dnClk1():
+        self.juice1()
+    def dnClk2():
+        self.juice2()
+    def dnClk3():
+        self.juice3()
+    def dnClk4():
+        self.juice4()
+    def dnClk5():
+        self.juice5()
+    def dnClk6():
+        self.juice6()
     
     def center(self):
         #this function tries to keep the main window  t the center of the screen
