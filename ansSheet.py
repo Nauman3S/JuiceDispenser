@@ -15,10 +15,29 @@ from clientGen import *
 import time
 
 from pyside_material import apply_stylesheet
-
+import subprocess
 import sharedSpace
 
+def clickable(widget):
 
+    class Filter(QObject):
+    
+        clicked = Signal()
+        
+        def eventFilter(self, obj, event):
+        
+            if obj == widget:
+                if event.type() == QEvent.MouseButtonRelease:
+                    if obj.rect().contains(event.pos()):
+                        self.clicked.emit()
+                        # The developer can opt for .emit(obj) to get the object within the slot.
+                        return True
+            
+            return False
+    
+    filter = Filter(widget)
+    widget.installEventFilter(filter)
+    return filter.clicked
 
 
 class AnsSheet(QtWidgets.QWidget):
@@ -49,6 +68,10 @@ class AnsSheet(QtWidgets.QWidget):
         self.b2= self.findChild(QtWidgets.QPushButton,'b2')
         self.b3= self.findChild(QtWidgets.QPushButton,'b3')
         # self.lb1.setText(str(self.timerVal))
+        self.keyboardIcon=QtGui.QPixmap(sharedSpace.keyboardICO)
+        self.keyboard= self.findChild(QtWidgets.QLabel,'keyboard')
+        self.keyboard.setPixmap(self.keyboardIcon)
+        clickable(self.keyboard).connect(self.openKeyboard)
 
         self.lbl1= self.findChild(QtWidgets.QLabel,'lbl1')
         self.lbl2= self.findChild(QtWidgets.QLabel,'lbl2')
@@ -60,6 +83,7 @@ class AnsSheet(QtWidgets.QWidget):
         self.ql3= self.findChild(QtWidgets.QLineEdit,'ql3')
         self.ql4= self.findChild(QtWidgets.QLineEdit,'ql4')
         self.ql5= self.findChild(QtWidgets.QLineEdit,'ql5')
+        
 
         self.b1.clicked.connect(self.clkB1)
         self.b2.clicked.connect(self.clkB2)
@@ -81,7 +105,9 @@ class AnsSheet(QtWidgets.QWidget):
         self.TimerClock.setInterval(1000)#Refresh the game timer after every 1 second=1 milliseconds
         self.TimerClock.timeout.connect(self.ClockTimer)
         self.TimerClock.start()
-
+    def openKeyboard(self):
+        print('opening/closing keyboard')
+        shellscript=subprocess.Popen(['sh', './keyboardToggle.sh'], stdin=subprocess.PIPE)
     def getfile(self):
 
         fname = QFileDialog.getOpenFileName(self, 'Open file',  'c:\\',"Image files (*.jpg *.png)")

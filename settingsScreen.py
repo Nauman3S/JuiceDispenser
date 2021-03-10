@@ -14,7 +14,27 @@ from PySide2.QtWidgets import *
 from clientGen import *
 import sharedSpace
 import time
+import subprocess
+def clickable(widget):
 
+    class Filter(QObject):
+    
+        clicked = Signal()
+        
+        def eventFilter(self, obj, event):
+        
+            if obj == widget:
+                if event.type() == QEvent.MouseButtonRelease:
+                    if obj.rect().contains(event.pos()):
+                        self.clicked.emit()
+                        # The developer can opt for .emit(obj) to get the object within the slot.
+                        return True
+            
+            return False
+    
+    filter = Filter(widget)
+    widget.installEventFilter(filter)
+    return filter.clicked
 class SettingsWindow(QtWidgets.QWidget):
     """
     This "window" is a QWidget. If it has no parent, it 
@@ -36,7 +56,11 @@ class SettingsWindow(QtWidgets.QWidget):
         self.pixmapOFF =[ QtGui.QPixmap('off0.png'),QtGui.QPixmap('on0.png'),QtGui.QPixmap('sec5.png'),QtGui.QPixmap('sec10.png')]
         self.pixmapON = [ QtGui.QPixmap('off1.png'),QtGui.QPixmap('on1.png'),QtGui.QPixmap('sec5on.png'),QtGui.QPixmap('sec10on.png')]
 
-        
+        self.keyboardIcon=QtGui.QPixmap(sharedSpace.keyboardICO)
+        self.keyboard= self.findChild(QtWidgets.QLabel,'keyboard')
+        self.keyboard.setPixmap(self.keyboardIcon)
+        clickable(self.keyboard).connect(self.openKeyboard)
+
         self.b2 = self.findChild(QtWidgets.QPushButton, "b2")
         self.b3 = self.findChild(QtWidgets.QPushButton, "b3")
 
@@ -67,7 +91,10 @@ class SettingsWindow(QtWidgets.QWidget):
         self.loadStates()
        
     #the functions below handles the mouse click events 
-   
+    def openKeyboard(self):
+
+        print('opening/closing keyboard')
+        shellscript=subprocess.Popen(['sh', './keyboardToggle.sh'], stdin=subprocess.PIPE)
     def clkB2(self):
         print("b2")
         sharedSpace.ingredientsText[0]=self.txt1.text()

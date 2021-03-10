@@ -7,6 +7,7 @@ activeWindow="main"
 ingredientsText=['Gin', 'Lemon', 'Malt','Orange']
 
 drinksPath=['drinks/1.png','drinks/2.png','drinks/3.png','drinks/4.png','drinks/5.png','drinks/6.png']
+keyboardICO='img/keyboard.png'
 
 drinksIngredientsMl=[[20,10,10,10],[20,10,10,10],[20,10,10,10],[20,10,10,10],[20,10,10,10],[20,10,10,10]]
 
