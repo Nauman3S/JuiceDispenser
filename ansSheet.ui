@@ -305,6 +305,9 @@
      </rect>
     </property>
     <layout class="QGridLayout" name="keyboarL">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetFixedSize</enum>
+     </property>
      <item row="2" column="2">
       <widget class="QPushButton" name="KeyS">
        <property name="text">
