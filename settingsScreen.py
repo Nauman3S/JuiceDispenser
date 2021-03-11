@@ -104,6 +104,8 @@ class SettingsWindow(QtWidgets.QWidget):
         self.KeyCaps.clicked.connect(self.capsBtn)
         self.KeySpace=self.findChild(QtWidgets.QPushButton,"KeySpace")
         self.KeySpace.clicked.connect(self.spaceBtn)
+        self.KeyBackspace=self.findChild(QtWidgets.QPushButton,"KeyBackspace")
+        self.KeyBackspace.clicked.connect(self.backspaceBtn)
         self.keys=['A','S','D','F','G','H','J','K','L','Q','W','E','R','T','Y','U','I','O','P','Z','X','C','V','B','N','M']
         
         self.NumberKeys=[]
@@ -179,6 +181,9 @@ class SettingsWindow(QtWidgets.QWidget):
         self.keyboardLayout.setVisible(True)
         self.keyboardLayout.move(20,80)
         self.SelectedTXTBox=4
+    def backspaceBtn(self):
+        txt=self.txtBoxes[self.SelectedTXTBox-1].text()[:-1]
+        self.txtBoxes[self.SelectedTXTBox-1].setText(txt+' ')
     def spaceBtn(self):
         txt=self.txtBoxes[self.SelectedTXTBox-1].text()
         self.txtBoxes[self.SelectedTXTBox-1].setText(txt+' ')
