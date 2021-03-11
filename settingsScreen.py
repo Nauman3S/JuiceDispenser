@@ -182,8 +182,9 @@ class SettingsWindow(QtWidgets.QWidget):
         self.keyboardLayout.move(20,80)
         self.SelectedTXTBox=4
     def backspaceBtn(self):
-        txt=self.txtBoxes[self.SelectedTXTBox-1].text()[:-1]
-        self.txtBoxes[self.SelectedTXTBox-1].setText(txt+' ')
+        self.txt=self.txtBoxes[self.SelectedTXTBox-1].text()
+        self.txt=self.txt[:-1]
+        self.txtBoxes[self.SelectedTXTBox-1].setText(self.txt)
     def spaceBtn(self):
         txt=self.txtBoxes[self.SelectedTXTBox-1].text()
         self.txtBoxes[self.SelectedTXTBox-1].setText(txt+' ')
