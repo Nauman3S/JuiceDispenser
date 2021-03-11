@@ -99,15 +99,153 @@ class AnsSheet(QtWidgets.QWidget):
         self.ql3.setText(str(sharedSpace.drinksIngredientsMl[self.selectedD][1]))
         self.ql4.setText(str(sharedSpace.drinksIngredientsMl[self.selectedD][2]))
         self.ql5.setText(str(sharedSpace.drinksIngredientsMl[self.selectedD][3]))
+        self.txtBoxes=[self.ql1,self.ql2,self.ql3,self.ql4,self.ql5]
+        clickable(self.ql1).connect(self.text1Click)
+        clickable(self.ql2).connect(self.text2Click)
+        clickable(self.ql3).connect(self.text3Click)
+        clickable(self.ql4).connect(self.text4Click)
+        clickable(self.ql5).connect(self.text5Click)
+
+        self.KeyboardState=False
+        self.CapsOn=True
+        self.keyboardLayout= self.findChild(QtWidgets.QFrame,'kayboardLayout')
+        self.keyboardLayout.setVisible(False)
+        self.KeyCaps=self.findChild(QtWidgets.QPushButton,"KeyCaps")
+        self.KeyCaps.clicked.connect(self.capsBtn)
+        self.KeySpace=self.findChild(QtWidgets.QPushButton,"KeySpace")
+        self.KeySpace.clicked.connect(self.spaceBtn)
+        self.keys=['A','S','D','F','G','H','J','K','L','Q','W','E','R','T','Y','U','I','O','P','Z','X','C','V','B','N','M']
+        
+        self.NumberKeys=[]
+        self.CharKeys=[]
+        for i in range(0,10):
+            self.NumberKeys.append(self.findChild(QtWidgets.QPushButton, "Key"+str(i)))
+           
+            #print(i)
+        
+        self.NumberKeys[0].clicked.connect(lambda: self.numKeysBtn(str(0)))
+        self.NumberKeys[1].clicked.connect(lambda: self.numKeysBtn(str(1)))
+        self.NumberKeys[2].clicked.connect(lambda: self.numKeysBtn(str(2)))
+        self.NumberKeys[3].clicked.connect(lambda: self.numKeysBtn(str(3)))
+        self.NumberKeys[4].clicked.connect(lambda: self.numKeysBtn(str(4)))
+        self.NumberKeys[5].clicked.connect(lambda: self.numKeysBtn(str(5)))
+        self.NumberKeys[6].clicked.connect(lambda: self.numKeysBtn(str(6)))
+        self.NumberKeys[7].clicked.connect(lambda: self.numKeysBtn(str(7)))
+        self.NumberKeys[8].clicked.connect(lambda: self.numKeysBtn(str(8)))
+        self.NumberKeys[9].clicked.connect(lambda: self.numKeysBtn(str(9)))
+
+        #print(self.NumberKeys)
+        for i in range(0,len(self.keys)):
+            self.CharKeys.append(self.findChild(QtWidgets.QPushButton, "Key"+self.keys[i]))
+            # self.CharKeys[i].clicked.connect(lambda: self.charKeysBtn(self.keys[i]))
+
+        # self.loadStates()
+        # print(self.CharKeys)
+
+        self.CharKeys[0].clicked.connect(lambda: self.charKeysBtn(self.CharKeys[0].text()))
+        self.CharKeys[1].clicked.connect(lambda: self.charKeysBtn(self.CharKeys[1].text()))
+        self.CharKeys[2].clicked.connect(lambda: self.charKeysBtn(self.CharKeys[2].text()))
+        self.CharKeys[3].clicked.connect(lambda: self.charKeysBtn(self.CharKeys[3].text()))
+        self.CharKeys[4].clicked.connect(lambda: self.charKeysBtn(self.CharKeys[4].text()))
+        self.CharKeys[5].clicked.connect(lambda: self.charKeysBtn(self.CharKeys[5].text()))
+        self.CharKeys[6].clicked.connect(lambda: self.charKeysBtn(self.CharKeys[6].text()))
+        self.CharKeys[7].clicked.connect(lambda: self.charKeysBtn(self.CharKeys[7].text()))
+        self.CharKeys[8].clicked.connect(lambda: self.charKeysBtn(self.CharKeys[8].text()))
+        self.CharKeys[9].clicked.connect(lambda: self.charKeysBtn(self.CharKeys[9].text()))
+        self.CharKeys[10].clicked.connect(lambda: self.charKeysBtn(self.CharKeys[10].text()))
+        self.CharKeys[11].clicked.connect(lambda: self.charKeysBtn(self.CharKeys[11].text()))
+        self.CharKeys[12].clicked.connect(lambda: self.charKeysBtn(self.CharKeys[12].text()))
+        self.CharKeys[13].clicked.connect(lambda: self.charKeysBtn(self.CharKeys[13].text()))
+        self.CharKeys[14].clicked.connect(lambda: self.charKeysBtn(self.CharKeys[14].text()))
+        self.CharKeys[15].clicked.connect(lambda: self.charKeysBtn(self.CharKeys[15].text()))
+        self.CharKeys[16].clicked.connect(lambda: self.charKeysBtn(self.CharKeys[16].text()))
+        self.CharKeys[17].clicked.connect(lambda: self.charKeysBtn(self.CharKeys[17].text()))
+        self.CharKeys[18].clicked.connect(lambda: self.charKeysBtn(self.CharKeys[18].text()))
+        self.CharKeys[19].clicked.connect(lambda: self.charKeysBtn(self.CharKeys[19].text()))
+        self.CharKeys[20].clicked.connect(lambda: self.charKeysBtn(self.CharKeys[20].text()))
+        self.CharKeys[21].clicked.connect(lambda: self.charKeysBtn(self.CharKeys[21].text()))
+        self.CharKeys[22].clicked.connect(lambda: self.charKeysBtn(self.CharKeys[22].text()))
+        self.CharKeys[23].clicked.connect(lambda: self.charKeysBtn(self.CharKeys[23].text()))
+        self.CharKeys[24].clicked.connect(lambda: self.charKeysBtn(self.CharKeys[24].text()))
+        self.CharKeys[25].clicked.connect(lambda: self.charKeysBtn(self.CharKeys[25].text()))
 
         
         self.TimerClock = QTimer()
         self.TimerClock.setInterval(1000)#Refresh the game timer after every 1 second=1 milliseconds
         self.TimerClock.timeout.connect(self.ClockTimer)
         self.TimerClock.start()
+    def text1Click(self):
+        print('txt1 clicked')
+        self.keyboardLayout.setVisible(True)
+        self.keyboardLayout.move(20,270)
+        self.SelectedTXTBox=1
+    def text2Click(self):
+        print('txt2 clicked')
+        self.keyboardLayout.setVisible(True)
+        self.keyboardLayout.move(20,270)
+        self.SelectedTXTBox=2
+    def text3Click(self):
+        print('txt3 clicked')
+        self.SelectedTXTBox=3
+        self.keyboardLayout.setVisible(True)
+        self.keyboardLayout.move(20,80)
+    def text4Click(self):
+        print('txt4 clicked')
+        self.keyboardLayout.setVisible(True)
+        self.keyboardLayout.move(20,80)
+        self.SelectedTXTBox=4
+    def text5Click(self):
+        print('txt5 clicked')
+        self.keyboardLayout.setVisible(True)
+        self.keyboardLayout.move(20,80)
+        self.SelectedTXTBox=4
+    def spaceBtn(self):
+        txt=self.txtBoxes[self.SelectedTXTBox-1].text()
+        self.txtBoxes[self.SelectedTXTBox-1].setText(txt+' ')
+
+    def capsBtn(self):
+        print('caps pressed')
+        # self.CharKeys[0].setText('a')
+        self.CapsOn=not(self.CapsOn)
+
+        # if(self.CapsOn):
+        #     self.CharKeys[0].setText(self.keys[0].lower())
+                
+        # else:
+           
+        #     self.CharKeys[0].setText(self.keys[0].upper())
+        # self.CapsOn=not(self.CapsOn)
+        # self.update()
+
+    
+    def numKeysBtn(self,btn):
+        print('pressed:::',btn)
+        
+        txt=self.txtBoxes[self.SelectedTXTBox-1].text()
+        self.txtBoxes[self.SelectedTXTBox-1].setText(txt+str(btn))
+    def charKeysBtn(self,btn):
+        print('pressed:::',btn)
+        txt=self.txtBoxes[self.SelectedTXTBox-1].text()
+        if(self.CapsOn):
+            self.txtBoxes[self.SelectedTXTBox-1].setText(txt+str(btn).upper())
+        else:
+            self.txtBoxes[self.SelectedTXTBox-1].setText(txt+str(btn).lower())
+
     def openKeyboard(self):
+
         print('opening/closing keyboard')
-        shellscript=subprocess.Popen(['sh', './keyboardToggle.sh'], stdin=subprocess.PIPE)
+        #shellscript=subprocess.Popen(['sh', './keyboardToggle.sh'], stdin=subprocess.PIPE)
+        # self.KeyboardState=not (self.KeyboardState)
+        if(self.KeyboardState):
+            self.KeyboardState=False
+            self.keyboardLayout.setVisible(self.KeyboardState)
+            
+        else:
+            self.KeyboardState=True
+            self.keyboardLayout.setVisible(self.KeyboardState)
+            
+
+        
     def getfile(self):
 
         fname = QFileDialog.getOpenFileName(self, 'Open file',  'c:\\',"Image files (*.jpg *.png)")
